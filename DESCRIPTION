@@ -1,11 +1,11 @@
 Package: BayesESS
 Type: Package
 Title: Determining Effective Sample Size
-Version: 0.1.12
+Version: 0.1.19
 Author: Jaejoon Song, Satoshi Morita, J. Jack Lee
-Maintainer: Jaejoon Song <jjsong2@mdanderson.org>
+Maintainer: Jaejoon Song <jaejoonsong@gmail.com>
 Description: Determines effective sample size of a parametric prior distribution
-    in Bayesian models. To learn more about Bayesian effective sample size, see: Morita, S., Thall, P. F., & Muller, P. (2008) <https://www.jstor.org/stable/25502095>.
+    in Bayesian models. For a web-based Shiny application related to this package, see <https://implement.shinyapps.io/bayesess/>. 
 Depends: MCMCpack, stats, LaplacesDemon
 Imports: Rcpp, dfcrm, MatrixModels, MASS
 LinkingTo: Rcpp, RcppArmadillo, RcppEigen
@@ -13,7 +13,8 @@ License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
+Suggests: knitr, rmarkdown
 NeedsCompilation: yes
-Packaged: 2018-04-03 18:45:54 UTC; JS
+Packaged: 2019-11-25 15:09:13 UTC; JS
 Repository: CRAN
-Date/Publication: 2018-04-05 14:24:53 UTC
+Date/Publication: 2019-11-25 19:50:06 UTC

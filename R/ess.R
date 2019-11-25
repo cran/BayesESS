@@ -243,7 +243,7 @@ ess <- function(model=NULL,label=NULL,
                                         theta_sub1=svec1, theta_sub2=svec2 )
     }
 
-    ESSoutput <- list(ESSoverall = myESS$ESSwholetheta,
+    ESSoutput <- list(#ESSoverall = myESS$ESSwholetheta,
                       ESSsubvec1 = myESS$ESSsubvector1,
                       ESSsubvec2 = myESS$ESSsubvector2)
 
@@ -253,8 +253,8 @@ ess <- function(model=NULL,label=NULL,
     cat(noquote(paste("ESS was calculated for a ",modelStatement," model", sep="")))
     cat("\n")
     cat("\n")
-    cat(noquote(paste("ESSoverall: Overall ESS for the whole vector ",overall_out_label, sep="")))
-    cat("\n")
+    #cat(noquote(paste("ESSoverall: Overall ESS for the whole vector ",overall_out_label, sep="")))
+    #cat("\n")
     cat(noquote(paste("ESSsubvector1: ESS for the first sub-vector ",svec1_out_label, sep="")))
     cat("\n")
     cat(noquote(paste("ESSsubvector1: ESS for the second sub-vector ",svec2_out_label, sep="")))
@@ -285,7 +285,7 @@ ess <- function(model=NULL,label=NULL,
     cat(noquote(paste("ESS was calculated for a ",modelStatement," model", sep="")))
     cat("\n")
     cat("\n")
-    cat(noquote(paste("ESS for the N(0,",round(betaSD^2,2),") ",label," prior"," is: ",round(myEssCRM,2), sep="")))
+    cat(noquote(paste("ESS for the N(0,",round(betaSD^2,10),") ",label," prior"," is: ",round(myEssCRM,10), sep="")))
     cat("\n")
     cat("\n")
     cat("\n")
@@ -308,7 +308,7 @@ ess <- function(model=NULL,label=NULL,
     cat(noquote(paste("ESS was calculated for a ",modelStatement," model", sep="")))
     cat("\n")
     cat("\n")
-    cat(noquote(paste("ESS for the N(0,",round(betaSD^2,2),") ",label," prior"," is: ",round(myEssCRM,2), sep="")))
+    cat(noquote(paste("ESS for the N(0,",round(betaSD^2,10),") ",label," prior"," is: ",round(myEssCRM,10), sep="")))
     cat("\n")
     cat("\n")
     cat("\n")
@@ -392,8 +392,8 @@ ess <- function(model=NULL,label=NULL,
       cat(noquote(paste("ESS was calculated for a ",modelStatement," model (with unknown mean and unknown variance)", sep="")))
       cat("\n")
       cat("\n")
-      cat(noquote(paste("ESS_overall: Overall ESS for the priors specified for the mean and variance is ",myESSNorm$ESS_overall, sep="")))
-      cat("\n")
+      #cat(noquote(paste("ESS_overall: Overall ESS for the priors specified for the mean and variance is ",myESSNorm$ESS_overall, sep="")))
+      #cat("\n")
       cat(noquote(paste("ESS_sigmasq: ESS for the scaled-inv-chi-squared(",prior[1],",",prior[2],") prior for variance is ",round(myESSNorm$ESS_sigmasq,2), sep="")))
       cat("\n")
       cat(noquote(paste("ESS_mu: ESS for the normal prior for mean is ",round(myESSNorm$ESS_mu,2), sep="")))
@@ -457,8 +457,8 @@ ess <- function(model=NULL,label=NULL,
       cat(noquote(paste("ESS was calculated for a ",modelStatement," model (with unknown mean and unknown variance)", sep="")))
       cat("\n")
       cat("\n")
-      cat(noquote(paste("ESS_overall: Overall ESS for the priors specified for the mean and variance is ",myESSNorm$ESS_overall, sep="")))
-      cat("\n")
+      #cat(noquote(paste("ESS_overall: Overall ESS for the priors specified for the mean and variance is ",myESSNorm$ESS_overall, sep="")))
+      #cat("\n")
       cat(noquote(paste("ESS_sigmasq: ESS for the inv-gamma(",prior[1],",",prior[2],") prior for variance is ",round(myESSNorm$ESS_sigmasq,2), sep="")))
       cat("\n")
       cat(noquote(paste("ESS_mu: ESS for the normal prior for mean is ",round(myESSNorm$ESS_mu,2), sep="")))

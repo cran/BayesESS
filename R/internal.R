@@ -297,8 +297,8 @@ ESS_RegressionCalc <- function( Reg_model, Num_cov,
   ### The prior ESS of subvector 1     is  ESS.s1
 
   ### The prior ESS of subvector 2     is  ESS.s2
-  return( list(ESSwholetheta=ESS, ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
-
+  #return( list(ESSwholetheta=ESS, ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
+  return( list(ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
 
 }  # end of ESS_RegressionCalc function
 
@@ -505,8 +505,8 @@ ESS_RegressionCalcFast1 <- function( Reg_model, Num_cov,
   ### The prior ESS of subvector 1     is  ESS.s1
 
   ### The prior ESS of subvector 2     is  ESS.s2
-  return( list(ESSwholetheta=ESS, ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
-
+  #return( list(ESSwholetheta=ESS, ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
+  return( list(ESSsubvector1=ESS.s1, ESSsubvector2=ESS.s2) )
 
 }  # end of ESS_RegressionCalc function
 
@@ -536,6 +536,15 @@ essCRM <- function(type,PI,prior,betaSD,target,m,nsim,obswin=30,rate=2,accrual="
     result
   }
 
+  getDiffCRM <- function(d,y){
+    denom <- d - 1
+    term1 <- d*(log(d)^2)*(y-d)
+    term2 <- d*(log(d)^2)
+    term3 <- log(d)*(y-d)
+    result <- term1/(denom^2) + term2/denom - term3/denom
+    result
+  }
+
   deltaBar <- rep(NA,length(mRange))
 
   for(q in 1:length(mRange)){
@@ -550,7 +559,8 @@ essCRM <- function(type,PI,prior,betaSD,target,m,nsim,obswin=30,rate=2,accrual="
           simData <- titesim(PI, prior,
                              target, n=max(mRange),
                              x0=1, nsim=1,
-                             obswin=30, rate=2,
+                             # obswin=30, rate=2,
+                             obswin=obswin, rate=rate,
                              accrual="poisson",
                              scale=betaSD, seed=k)
 
@@ -585,9 +595,19 @@ essCRM <- function(type,PI,prior,betaSD,target,m,nsim,obswin=30,rate=2,accrual="
 
 
         Dq <- 0
+
+        if(type=='tite.crm'){
         for(i in 1:m){
           Dq <- Dq + getDiff(d=d[i],w=w[i],y=y[i])
         }
+        }
+
+        if(type=='crm'){
+          for(i in 1:m){
+            Dq <- Dq + getDiffCRM(d=d[i],y=y[i])
+          }
+        }
+
         sampMC[k] <- Dq
       }
       deltaBar[q] <- 1/((betaSD)^2) + mean(sampMC)
@@ -757,7 +777,7 @@ essNormal <- function(nu,sigma0,mu0=NULL,phi=NULL,knownMean=FALSE,m,nsim){
 
     ESS$ESS_sigmasq <- round(ESS_delta_1,2)
     ESS$ESS_mu <- round(ESS_delta_2,2)
-    ESS$ESS_overall <- round(ESS_delta,2)
+    #ESS$ESS_overall <- round(ESS_delta,2)
   }
 
   ESS

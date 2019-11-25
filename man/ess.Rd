@@ -40,7 +40,6 @@ ess(model,label,prior,m,nsim,ncov,svec1,svec2,
 
 \value{
   \item{ESS}{Returns ESS}
-  \item{ESSoverall}{(For linear or logistic regression model) Overall ESS for the whole vector}
   \item{ESSsubvec1}{(For linear or logistic regression model) ESS for the first sub-vector}
   \item{ESSsubvec2}{(For linear or logistic regression model) ESS for the second sub-vector}
 }
@@ -193,7 +192,7 @@ ess(model='surv',shapeParam=5.348,scaleParam=30.161,m=7,nsim=50)
 }
 
 \seealso{
-\url{https://biostatistics.mdanderson.org/softwaredownload/}
+\url{https://biostatistics.mdanderson.org/SoftwareDownload/}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
